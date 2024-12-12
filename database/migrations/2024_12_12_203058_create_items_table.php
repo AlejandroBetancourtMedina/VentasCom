@@ -7,18 +7,18 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.                                                  
+     * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('client', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('identificacion');
-            $table->string('telefono')->nullable();
-            $table->string('email')->nullable();
-            $table->string('empresa')->nullable();
-            $table->string('rutEmpresa')->nullable();
+            $table->string('image')->nullable();
+            $table->decimal('price',10,2);
+            $table->unsignedInteger('qty');
+            $table->date('fecha');
+            $table->bigInteger('product_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('items');
     }
 };
