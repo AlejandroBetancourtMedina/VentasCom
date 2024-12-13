@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('item_sale', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sale_id')->constrained()->onDelete('cascade');
+            $table->foreignId('sales_id')->constrained()->onDelete('cascade');
             $table->foreignId('item_id')->constrained()->onDelete('cascade');
             $table->unsignedInteger('qty');
             $table->date('fecha');
