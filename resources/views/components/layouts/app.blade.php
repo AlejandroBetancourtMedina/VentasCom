@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard </title>
+  <title>{{$title ?? config('app.name')}}</title>
 
   @include('components.layouts.partials.style')
 
@@ -53,7 +53,7 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-@include('components.layouts.partials.scripts')
+    @include('components.layouts.partials.scripts')
 
 <!-- PLUGINS -->
 

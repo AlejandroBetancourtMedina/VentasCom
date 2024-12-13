@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Home\Inicio;
+use App\Livewire\Categoria\CategoriaComponente;
 
 
 Route::get('/', function () {
@@ -14,3 +15,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //llamo al componente como si fuera un controlador
 Route::get('/Inicio', Inicio::class)->name('inicio');
+
+Route::get('/Categorias', CategoriaComponente::class)->name('categorias');
