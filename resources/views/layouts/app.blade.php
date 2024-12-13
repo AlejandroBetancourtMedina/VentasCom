@@ -15,8 +15,10 @@
 
     <!-- Scripts -->
     <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
+     
+     <!-- Plantilla de bootstrap para interfaz de auth -->
      <link rel="stylesheet" href="{{asset('css/bootstrap@5.3.2.min.css')}}">
-</head>
+    </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
