@@ -2,7 +2,9 @@
    <!-- invocando atributos de card.blade.php -->
     <x-card cardTitle="Listado Categoria ({{$this->totalRegistros}})"  >
         <x-slot:cardTools>
-            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalCategory">Crear Categoria</a>
+            <a href="#" class="btn btn-primary" wire:click='create' >
+                <i class="fas fa-plus-circle"></i>&nbsp;Crear Categoria
+            </a>
         </x-slot:cardTools>
    
         <x-table>

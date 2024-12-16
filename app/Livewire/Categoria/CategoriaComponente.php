@@ -43,6 +43,12 @@ class CategoriaComponente extends Component
        
     }
 
+    public function create(){
+        $this->reset(['name']);
+        $this->resetErrorBag();
+        $this->dispatch('open-modal', 'modalCategory');
+    }
+
     //metodo crear categoria
     public function store(){
         // dump('crear category');
@@ -80,7 +86,7 @@ class CategoriaComponente extends Component
 
         // dump($category);
     }
-
+    
         // ACTUALIZAR CATEGORIA
     public function update(Category $category){
         //dump($category);
