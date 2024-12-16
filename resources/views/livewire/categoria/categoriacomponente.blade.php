@@ -28,7 +28,7 @@
                     </td>
 
                     <th>
-                    <a href="#" class="btn btn-primary btn-xs" title="Editar">
+                    <a href="#" wire:click='edit({{$category->id}})' class="btn btn-primary btn-xs" title="Editar">
                         <i class="far fa-edit"></i>
                     </a>
                     </th>
@@ -57,7 +57,7 @@
     <x-modal modalId="modalCategory" modalTitle="Categorias">
     
     <!-- Formulario de Crear Categoria -->
-    <form wire:submit="store">
+    <form wire:submit={{$Id==0 ? "store" : "update($Id)"}}>
         <div class="form-row">
             <div class="form-group col-12">
                 <label for="name">Nombre:</label>
@@ -69,7 +69,7 @@
                 </div>
         </div>
         <br/>
-        <button class="btn btn-primary float-right">Guardar</button>
+        <button class="btn btn-primary float-right">{{$Id==0 ? 'Guardar' : 'Editar'}}</button>
     </form>
     
     </x-modal>

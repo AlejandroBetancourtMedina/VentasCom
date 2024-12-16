@@ -20,6 +20,7 @@ class CategoriaComponente extends Component
 
      //Propiedades clase
      public $name;
+     public $Id;
 
     public function render()
     {
@@ -68,6 +69,45 @@ class CategoriaComponente extends Component
         $this->dispatch('msg', 'Categoria creada correctamente.');
         //resetar campos tras guardo exitoso
         $this->reset(['name']);
+    
     }
+    //clase para editar categoria
+    public function edit(Category $category){
+        $this->Id = $category->id;
+        $this->name = $category->name;
+        $this->dispatch('open-modal', 'modalCategory');
+
+
+        // dump($category);
+    }
+
+        // ACTUALIZAR CATEGORIA
+    public function update(Category $category){
+        //dump($category);
+
+        // reglas y validaciones
+        $rules = [
+            'name' => 'required|min:5|max:255|unique:categories,id,'.$this->Id
+        ];
+        $messages = [
+            'name.required' => 'El nombre es requerido',
+            'name.min' => 'El nombre debe tener minimo 5 caracteres',
+            'name.max' => 'El nombre no debe superar los 255 caracteres',
+            'name.unique' => 'El nombre de la categoria ya existe'
+        ];
+        // aplicando validaciones y sus mensajes
+        $this->validate($rules, $messages);
+
+        $category ->name = $this->name;
+        $category-> update();
+
+          //Cerrar modal tras click en "guardar"
+          $this->dispatch('close-modal', 'modalCategory');
+          // mensaje de exito para creacion de categoria
+          $this->dispatch('msg', 'Categoria editada correctamente.');
+          //resetar campos tras guardo exitoso
+          $this->reset(['name']);
+}
+
     }
  
