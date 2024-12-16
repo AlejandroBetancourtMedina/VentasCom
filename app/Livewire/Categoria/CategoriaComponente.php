@@ -16,12 +16,14 @@ class CategoriaComponente extends Component
     //Propiedades clase
     public $search='';
     public $totalRegistros=0;
+    public $cant=5;
 
      //Propiedades clase
      public $name;
 
     public function render()
     {
+        // if que valida y permite utilizar el buscador en todas las paguinas que se creen en paguinacion de categorias
         if($this->search!=''){
             $this->resetPage();
         }
@@ -29,7 +31,7 @@ class CategoriaComponente extends Component
         //variable de las categorias, ordenando la paginacion y estableciendo una cantidad de 5
         $categories = category::where('name', 'like', '%'.$this->search.'%')
             ->orderBy('id', 'desc')
-            ->paginate(5);
+            ->paginate($this->cant);
         return view('livewire.categoria.categoriacomponente', [
             'categories' =>$categories
         ]);
