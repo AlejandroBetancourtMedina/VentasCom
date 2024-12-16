@@ -19,7 +19,12 @@ class CategoriaComponente extends Component
     public function render()
     {
         $this->totalRegistros = Category::count();
-        return view('livewire.categoria.categoriacomponente');
+        //variable de las categorias
+        $categories = category::all()->reverse();
+
+        return view('livewire.categoria.categoriacomponente', [
+            'categories' =>$categories
+        ]);
     }
 
     //Mount cumple la funcion de un constructor

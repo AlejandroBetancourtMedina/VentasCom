@@ -15,9 +15,11 @@
 
             </x-slot:thead>
 
+            @forelse($categories as $category)
+
                 <tr>
-                    <td>...</td>
-                    <td>...</td>
+                    <td>{{$category->id}}</td>
+                    <td>{{$category->name}}</td>
                     <td>
                         <a href="#" class= "btn btn-success btn-xs" title="Ver">
                             <i class="far fa-eye"></i>
@@ -38,6 +40,12 @@
                    
 
                 </tr>
+            @empty
+
+            <tr>
+                <td colspan="5">Sin Registros</td>
+            </tr>
+            @endforelse
             
         </x-table>
     </x-card>
@@ -46,10 +54,11 @@
     
     <!-- Formulario de Crear Categoria -->
     <form wire:submit="store">
-        <div class="row">
-            <div class="col">
+        <div class="form-row">
+            <div class="form-group col-12">
+                <label for="name">Nombre:</label>
                
-                <input wire:model='name' type="text" class="form-control" placeholder="Nombre Categoria">
+                <input wire:model='name' type="text" class="form-control" placeholder="Nombre Categoria" id="name">
                 @error('name')
                     <div class="alert alert-danger w-100 mt-2"> {{$message}}</div>
                 @enderror            
