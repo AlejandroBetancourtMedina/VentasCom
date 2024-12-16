@@ -11,7 +11,8 @@
         <span>Entradas</span>
     </div>
     <div>
-        <input type="text" class="form-control" placeholder="Buscar...">
+        <!-- el wire.model.live es para que busque y se vaya filtrando de enseguida -->
+        <input type="text" wire:model.live='search'class="form-control" placeholder="Buscar...">
     </div>
 </div>
 

@@ -1,6 +1,6 @@
 <div>
    <!-- invocando atributos de card.blade.php -->
-    <x-card cardTitle="Listado Categoria ({{$this->totalRegistros}})"  cardFooter=''>
+    <x-card cardTitle="Listado Categoria ({{$this->totalRegistros}})"  >
         <x-slot:cardTools>
             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalCategory">Crear Categoria</a>
         </x-slot:cardTools>
@@ -18,7 +18,8 @@
             @forelse($categories as $category)
 
                 <tr>
-                    <td>{{$category->id}}</td>
+                    <!-- Consumiendo las variables con si identificacion para que se muestren en la interfaz -->
+                    <td>{{$category->id}}</td> 
                     <td>{{$category->name}}</td>
                     <td>
                         <a href="#" class= "btn btn-success btn-xs" title="Ver">
@@ -48,6 +49,9 @@
             @endforelse
             
         </x-table>
+        <x-slot:cardFooter>
+            {{$categories->links()}}
+        </x-slot:cardFooter>
     </x-card>
 
     <x-modal modalId="modalCategory" modalTitle="Categorias">

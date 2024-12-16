@@ -5,12 +5,16 @@ namespace App\Livewire\Categoria;
 use Livewire\Component;
 use App\Models\Category;
 use Livewire\Attributes\Title;
+//import de paginacion de la vista
+use Livewire\withPagination;
 
 
 #[Title('Categoria')]
 class CategoriaComponente extends Component
 {
+    use withPagination;
     //Propiedades clase
+    public $search='';
     public $totalRegistros=0;
 
      //Propiedades clase
@@ -18,10 +22,14 @@ class CategoriaComponente extends Component
 
     public function render()
     {
+        if($this->search!=''){
+            $this->resetPage();
+        }
         $this->totalRegistros = Category::count();
-        //variable de las categorias
-        $categories = category::all()->reverse();
-
+        //variable de las categorias, ordenando la paginacion y estableciendo una cantidad de 5
+        $categories = category::where('name', 'like', '%'.$this->search.'%')
+            ->orderBy('id', 'desc')
+            ->paginate(5);
         return view('livewire.categoria.categoriacomponente', [
             'categories' =>$categories
         ]);
