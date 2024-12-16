@@ -1,9 +1,10 @@
 <div>
    <!-- invocando atributos de card.blade.php -->
-    <x-card cardTitle="Listado Categoria"  cardFooter=''>
+    <x-card cardTitle="Listado Categoria ({{$this->totalRegistros}})"  cardFooter=''>
         <x-slot:cardTools>
-            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="modalCategory">Crear Categoria</a>
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalCategory">Crear Categoria</a>
         </x-slot:cardTools>
+   
         <x-table>
             <x-slot:thead>
                 <th>ID</th>
@@ -43,9 +44,19 @@
 
     <x-modal modalId="modalCategory" modalTitle="Categorias">
     
-    <form>
-        <p>Formulario</p>
-        <button type="button" class="btn btn-primary">Save changes</button>
+    <!-- Formulario de Crear Categoria -->
+    <form wire:submit="store">
+        <div class="row">
+            <div class="col">
+               
+                <input wire:model='name' type="text" class="form-control" placeholder="Nombre Categoria">
+                @error('name')
+                    <div class="alert alert-danger w-100 mt-2"> {{$message}}</div>
+                @enderror            
+                </div>
+        </div>
+        <br/>
+        <button class="btn btn-primary float-right">Guardar</button>
     </form>
     
     </x-modal>

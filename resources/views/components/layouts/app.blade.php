@@ -36,6 +36,8 @@
     <section class="content">
       <div class="container-fluid">
 
+        @livewire('messages')
+       
         {{$slot}}
 
         
@@ -55,7 +57,14 @@
 <!-- REQUIRED SCRIPTS -->
     @include('components.layouts.partials.scripts')
 
-<!-- PLUGINS -->
+    <!-- Script para cerrar modal close-modal de categorias pasandole el id del modal-->
+    <script>
+      document.addEventListener('livewire:init', ()=>{
+        Livewire.on('close-modal', (idModal)=>{
+          $('#' + idModal).modal('hide');
+        })
+      })
+    </script>
 
 </body>
 </html>
